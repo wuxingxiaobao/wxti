@@ -1,0 +1,21 @@
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node（如果以后加构建）
+node_modules/
+npm-debug.log*
+
+# 临时/备份
+*.bak
+*.tmp
+.playwright-cli/
+mockup-result-preview.png

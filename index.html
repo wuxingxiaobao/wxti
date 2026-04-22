@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F3EE">
+  <title>五行小宝 · 人生游戏说明书</title>
+  <meta name="description" content="测测你的人生游戏说明书 · 60 日柱灵魂出厂配置全览">
+  
+  <!-- 手写字体（待 pp 选定再应用）-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+  <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/zcool-qingke-huangyou/dist/ZCOOLQingKeHuangYou-Regular/result.css">
+  <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/ma-shan-zheng/dist/MaShanZheng-Regular/result.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ========== 封面页 ========== -->
+    <div id="page-cover" class="page active">
+      <div class="cover-topbar">
+        <div class="cover-topbar-date"><span class="dot"></span>WXTI · 2026</div>
+      </div>
+      
+      <!-- Logo 放大居中 -->
+      <div class="cover-logo-center">
+        <img src="assets/logo.png" alt="五行小宝" class="cover-logo-big">
+      </div>
+      
+      <div class="cover-hero">
+        <div class="cover-badge">★ 人生使用说明书</div>
+        <div class="cover-title">测测你的</div>
+        <div class="cover-title-sub">人生游戏<span class="hl-red">说明书</span></div>
+        <div class="cover-title-en">WU·XING·XIAO·BAO</div>
+      </div>
+      
+      <!-- 诗意文案（pp v3 精修版）-->
+      <div class="cover-poem">
+        <div class="poem-line">此刻开始</div>
+        <div class="poem-line">进入无垠的时空</div>
+        <div class="poem-line">找到你的灵魂</div>
+        <div class="poem-line">最初落下的那个坐标</div>
+        <div class="poem-line">它是你一直没拆开的信封——</div>
+        <div class="poem-line poem-emphasis">你的人生游戏说明书</div>
+        <div class="poem-line">现在</div>
+        <div class="poem-line">拆开它</div>
+      </div>
+      
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="cover-stat-num">60</div>
+          <div class="cover-stat-label">种出厂配置</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">6</div>
+          <div class="cover-stat-label">维度解读</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">3s</div>
+          <div class="cover-stat-label">就能破防</div>
+        </div>
+      </div>
+      
+      <button class="cover-btn" data-action="start" type="button">开启说明书 →</button>
+      
+      <div class="cover-footer">© 五行小宝 · WUXINGXIAOBAO · 2026</div>
+    </div>
+
+    <!-- ========== 输入页 ========== -->
+    <div id="page-input" class="page">
+      <div class="page-header">
+        <button class="back-btn" data-action="back" type="button">‹</button>
+        <div class="page-header-title">输入生辰</div>
+        <div style="width: 32px;"></div>
+      </div>
+      
+      <div class="input-title">请输入你的<br><span class="hl">公历出生信息</span></div>
+      <div class="input-subtitle">MVP 版本仅测日柱人格底色 · 完整四柱到公众号免费领取</div>
+      
+      <div class="form-section">
+        <div class="form-section-label">BIRTH DATE & HOUR<span class="zh">· 生日 · 时辰</span></div>
+        <div class="date-row">
+          <select id="year" class="sel"></select>
+          <select id="month" class="sel"></select>
+          <select id="day" class="sel"></select>
+          <select id="hour" class="sel"></select>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="form-section-label">GENDER<span class="zh">· 性别</span></div>
+        <div class="gender-row">
+          <button class="gender-btn active" data-gender="male" type="button">男 ♂</button>
+          <button class="gender-btn" data-gender="female" type="button">女 ♀</button>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="form-section-label">BIRTHPLACE<span class="zh">· 出生地</span></div>
+        <select id="province" class="sel full"></select>
+        <div class="overseas-tip" id="overseas-tip" style="display:none;">
+          ⚠️ 海外用户时柱可能不准，建议按<strong>当地时间</strong>输入，完整时柱校正请到公众号领取专业解读
+        </div>
+      </div>
+      
+      <div class="input-tip">
+        · 按 <strong>公历</strong>（阳历）输入，非农历<br>
+        · 不确定时辰可选「不确定」，仅影响时柱<br>
+        · 本测试结果仅供 <strong>娱乐参考</strong>
+      </div>
+      
+      <button class="submit-btn" data-action="submit" type="button">揭晓我的出厂配置 →</button>
+    </div>
+
+    <!-- ========== 加载页 ========== -->
+    <div id="page-loading" class="page">
+      <div class="loading-logo-wrap">
+        <img src="assets/logo-mark-dark.svg" alt="loading" class="loading-logo-mark">
+      </div>
+      <div class="loading-text">
+        · 读取生辰 ·<br>
+        · 排盘四柱 ·<br>
+        · 生成人生游戏说明书 ·
+      </div>
+    </div>
+
+    <!-- ========== 结果页 ========== -->
+    <div id="page-result" class="page">
+      <div class="page-header">
+        <button class="back-btn" data-action="retest" type="button">‹</button>
+        <div class="page-header-title">你的人生游戏说明书</div>
+        <div style="width: 32px;"></div>
+      </div>
+      
+      <!-- 八字栏 -->
+      <div class="bazi-section">
+        <div class="bazi-label">
+          <span class="bazi-label-zh">你的八字</span>
+          <span class="bazi-label-en">YOUR BAZI</span>
+        </div>
+        <div class="bazi-pillars" id="bazi-pillars"></div>
+      </div>
+      
+      <!-- 人格主卡 -->
+      <div class="persona-card">
+        <!-- 人格图 -->
+        <div class="persona-img" id="p-img-wrap">
+          <div class="fallback" id="p-fallback">—</div>
+        </div>
+        
+        <!-- 人格名居中，日柱·人格名同字号 -->
+        <div class="persona-hint-big">你的人格底色是</div>
+        <div class="persona-name-row">
+          <span class="persona-gz" id="p-gz">—</span><span class="persona-dot">·</span><span class="persona-name" id="p-name">—</span>
+        </div>
+        
+        <!-- 灵魂弹幕 -->
+        <div class="section-divider">
+          <span class="sd-icon">🗣️</span>
+          <span class="sd-title">灵魂弹幕</span>
+          <span class="sd-en">SOUL · DANMU</span>
+        </div>
+        <div class="lines" id="p-lines"></div>
+        
+        <!-- 出厂技能 -->
+        <div class="section-divider">
+          <span class="sd-icon">🎮</span>
+          <span class="sd-title">出厂技能</span>
+          <span class="sd-en">FACTORY SKILLS</span>
+        </div>
+        <div class="skills" id="p-skills"></div>
+        
+        <!-- 日柱解读 -->
+        <div class="section-divider">
+          <span class="sd-icon">◆</span>
+          <span class="sd-title">日柱解读</span>
+          <span class="sd-en">DECODE</span>
+        </div>
+        <div class="explain" id="p-explain">—</div>
+        
+        <!-- 正确 / 错误用法 -->
+        <div class="usage-grid">
+          <div class="usage-box good">
+            <div class="usage-title">✅ 正确用法</div>
+            <div class="usage-content" id="p-good">—</div>
+          </div>
+          <div class="usage-box bad">
+            <div class="usage-title">⚠️ 错误用法</div>
+            <div class="usage-content" id="p-bad">—</div>
+          </div>
+        </div>
+        
+        <!-- 🤝 天选搭子 -->
+        <div class="section-divider">
+          <span class="sd-icon">🤝</span>
+          <span class="sd-title">天选搭子</span>
+          <span class="sd-en">MATCH</span>
+        </div>
+        <div class="pair-list" id="p-match"></div>
+        
+        <!-- ⚠️ 警惕对象 -->
+        <div class="section-divider">
+          <span class="sd-icon">⚠️</span>
+          <span class="sd-title">警惕对象</span>
+          <span class="sd-en">AVOID</span>
+        </div>
+        <div class="pair-list" id="p-avoid"></div>
+        
+        <!-- 测测 TA -->
+        <div class="ta-cta">
+          <div class="ta-cta-title">💘 想知道 TA 跟你配不配？</div>
+          <div class="ta-cta-sub">输入 TA 的生日 · 生成你俩专属配对卡</div>
+          <button class="ta-cta-btn" data-action="testTa" type="button">测测 TA 的日柱 →</button>
+        </div>
+      </div>
+      
+      <div class="result-actions">
+        <button class="action-btn primary" data-action="share" type="button">📸 生成分享卡</button>
+        <button class="action-btn premium" data-action="premium" type="button">关注公众号查看更多 →</button>
+        <button class="action-btn secondary" data-action="retest" type="button">↻ 重新测试</button>
+      </div>
+      
+      <div class="result-tip">
+        此测试仅为【日柱】—— 四柱之一<br>
+        完整八字含年·月·日·时四柱，合参方能见全貌
+      </div>
+    </div>
+
+    <!-- ========== 分享卡浮层 ========== -->
+    <div id="share-overlay" class="overlay">
+      <button class="overlay-close" data-action="closeShare" type="button">✕</button>
+      <div id="share-card-wrap">
+        <div id="share-card">
+          <!-- 顶部 -->
+          <div class="sc-top">
+            <img src="assets/logo.png" alt="logo" class="sc-logo">
+            <div class="sc-top-right">
+              <div class="sc-brand-zh">五行小宝</div>
+              <div class="sc-brand-en">人生游戏说明书</div>
+            </div>
+          </div>
+          
+          <!-- 八字 -->
+          <div class="sc-bazi-row">
+            <div class="sc-bazi-label">你的八字</div>
+            <div class="sc-bazi" id="sc-bazi"></div>
+          </div>
+          
+          <!-- 人格图 + 人格名 -->
+          <div class="sc-persona">
+            <div class="sc-persona-img" id="sc-img-wrap">
+              <div class="fallback" id="sc-fallback">—</div>
+            </div>
+            <div class="sc-persona-hint">你的人格底色是</div>
+            <div class="sc-persona-name">
+              <span class="sc-gz" id="sc-gz">—</span><span class="sc-dot">·</span><span class="sc-name" id="sc-name">—</span>
+            </div>
+          </div>
+          
+          <!-- 灵魂弹幕 -->
+          <div class="sc-section-title">🗣 灵魂弹幕</div>
+          <div class="sc-lines" id="sc-lines"></div>
+          
+          <!-- 日柱解读（简版）-->
+          <div class="sc-section-title">◆ 日柱解读</div>
+          <div class="sc-explain" id="sc-explain">—</div>
+          
+          <!-- 天选搭子 -->
+          <div class="sc-section-title">🤝 天选搭子</div>
+          <div class="sc-pair-row" id="sc-match"></div>
+          
+          <!-- 警惕对象 -->
+          <div class="sc-section-title">⚠️ 警惕对象</div>
+          <div class="sc-pair-row" id="sc-avoid"></div>
+          
+          <!-- 底部：公众号 + H5 双二维码 -->
+          <div class="sc-footer">
+            <div class="sc-footer-left">
+              <div class="sc-footer-brand">测你的人生游戏说明书</div>
+              <div class="sc-footer-tip">WXTI · 五行小宝 · 2026</div>
+              <div class="sc-footer-wx">公众号 · 普通扑通</div>
+            </div>
+            <div class="sc-qr-group">
+              <div class="sc-qr-item">
+                <img src="assets/wechat-qr.jpg" alt="公众号" class="sc-qr-img">
+                <div class="sc-qr-label">公众号</div>
+              </div>
+              <div class="sc-qr-item">
+                <div class="sc-qr-placeholder">H5<br>二维码</div>
+                <div class="sc-qr-label">测一下</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="share-actions-bottom">
+          <button data-action="download" type="button">💾 保存图片</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 公众号引流弹窗 · 极简版 ========== -->
+    <div id="premium-overlay" class="overlay">
+      <button class="overlay-close" data-action="closePremium" type="button">✕</button>
+      <div id="premium-modal">
+        <div class="modal-title">关注公众号</div>
+        <div class="modal-wechat-name-big">普通扑通</div>
+        <div class="modal-sep"></div>
+        <img src="assets/wechat-qr.jpg" alt="普通扑通公众号" class="modal-qr-img">
+        <div class="modal-qr-tip">长按扫码 · 查看更多</div>
+      </div>
+    </div>
+
+    <!-- ========== 测测 TA 弹窗 ========== -->
+    <div id="ta-overlay" class="overlay">
+      <button class="overlay-close" data-action="closeTa" type="button">✕</button>
+      <div id="ta-modal">
+        <!-- Step 1: TA 输入 -->
+        <div id="ta-step-input">
+          <div class="modal-title">测测 TA 是谁</div>
+          <div class="modal-subtitle">TELL ME ABOUT TA</div>
+          
+          <div class="ta-form">
+            <div class="form-section">
+              <div class="form-section-label">TA 是<span class="zh">· 备注用</span></div>
+              <input type="text" id="ta-nickname" class="ta-input" placeholder="给 TA 起个昵称（如：老板、前任、闺蜜）" maxlength="10">
+            </div>
+            
+            <div class="form-section">
+              <div class="form-section-label">TA 的生日</div>
+              <div class="date-row" style="grid-template-columns: 1.2fr 1fr 1fr;">
+                <select id="ta-year" class="sel"></select>
+                <select id="ta-month" class="sel"></select>
+                <select id="ta-day" class="sel"></select>
+              </div>
+            </div>
+          </div>
+          
+          <button class="submit-btn" data-action="submitTa" type="button" style="margin-top:20px">揭晓 TA 的出厂配置 →</button>
+        </div>
+        
+        <!-- Step 2: 配对结果 -->
+        <div id="ta-step-result" style="display:none;">
+          <div class="ta-result-header">
+            <div class="ta-result-title" id="ta-result-title">你 × TA</div>
+            <div class="ta-result-subtitle" id="ta-result-verdict">—</div>
+          </div>
+          
+          <div class="ta-duo">
+            <div class="ta-duo-card me">
+              <div class="ta-duo-label">你</div>
+              <div class="ta-duo-img" id="ta-duo-me-img"></div>
+              <div class="ta-duo-gz" id="ta-duo-me-gz">—</div>
+              <div class="ta-duo-name" id="ta-duo-me-name">—</div>
+            </div>
+            <div class="ta-duo-relation" id="ta-duo-relation">—</div>
+            <div class="ta-duo-card ta">
+              <div class="ta-duo-label" id="ta-duo-ta-label">TA</div>
+              <div class="ta-duo-img" id="ta-duo-ta-img"></div>
+              <div class="ta-duo-gz" id="ta-duo-ta-gz">—</div>
+              <div class="ta-duo-name" id="ta-duo-ta-name">—</div>
+            </div>
+          </div>
+          
+          <div class="ta-verdict-box" id="ta-verdict-box">
+            <div class="ta-verdict-quote" id="ta-verdict-quote">—</div>
+          </div>
+          
+          <div class="ta-actions">
+            <button class="action-btn primary" data-action="shareTa" type="button">📸 生成双人配对卡</button>
+            <button class="action-btn secondary" data-action="testTaAgain" type="button">↻ 再测一个 TA</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="js/ganzhi.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pair.js"></script>
+  <script src="js/img-manifest.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
